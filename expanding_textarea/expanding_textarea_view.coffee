@@ -1,6 +1,6 @@
-expandingTextarea = require('templates/expanding_textarea')
+expandingTextarea = require('widgets/expanding_textarea/expanding_textarea')
 
-class exports.ExpandingAreaView extends Backbone.View
+class exports.ExpandingTextareaView extends Backbone.View
 
   render: =>
     context = {}
