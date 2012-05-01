@@ -1,3 +1,5 @@
+@import "compass/css3/box-shadow";
+
 .expanding-textarea {
   textarea {
     @include trailer(0.25);
