@@ -1,7 +1,7 @@
 $ = jQuery
 expandingTextarea = require('widgets/expanding_textarea/expanding_textarea')
 
-class exports.ExpandingTextareaView extends Backbone.View
+module.exports = class ExpandingTextareaView extends Backbone.View
 
   render: =>
     context = {}

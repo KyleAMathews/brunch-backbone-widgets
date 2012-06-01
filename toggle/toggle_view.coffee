@@ -1,5 +1,5 @@
 ToggleTemplate = require 'widgets/toggle/toggle'
-class exports.ToggleView extends Backbone.View
+module.exports = class ToggleView extends Backbone.View
 
   events:
     'mousedown button': 'toggleActive'
