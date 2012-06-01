@@ -1,4 +1,5 @@
 ToggleTemplate = require 'widgets/toggle/toggle'
+
 module.exports = class ToggleView extends Backbone.View
 
   events:
@@ -6,7 +7,7 @@ module.exports = class ToggleView extends Backbone.View
 
   render: ->
     @$el.html ToggleTemplate( buttons: @options.buttons )
-    @$('button').eq(0).addClass 'active'
+    @$("button[data-machinename='#{ @options.active }']").addClass('active')
 
     # Add fastClick support.
     if $.fn.fastClick?
@@ -14,10 +15,24 @@ module.exports = class ToggleView extends Backbone.View
         @toggleActive(e)
     @
 
-  toggleActive: (e) ->
-    unless $(e.target).hasClass 'active'
-      @$('button').removeClass 'active'
-      $(e.target).addClass 'active'
-      @trigger 'toggle', $(e.target).data('machinename')
+  setActive: (machinename) ->
+    @$('button').removeClass 'active'
+    @$("button[data-machinename='#{ machinename }']").addClass('active')
 
-exports.ToggleView.prototype = _.extend exports.ToggleView.prototype, Backbone.Events
+  toggleActive: (e) ->
+    # Parent views using this widget can pass in a beforeToggle function
+    # to validate or do other checks before allowing the toggle to
+    # continue.
+    if @options.beforeToggle
+      @options.beforeToggle (e), @_toggle
+    else
+      @_toggle(e)
+
+  _toggle: (error, e) =>
+    unless error
+      unless $(e.target).hasClass 'active'
+        @$('button').removeClass 'active'
+        $(e.target).addClass 'active'
+        @trigger 'toggle', $(e.target).data('machinename')
+
+module.exports.prototype = _.extend module.exports.prototype, Backbone.Events
