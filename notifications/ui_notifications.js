@@ -120,10 +120,10 @@ exports.Notification = Notification;
 // list
 
 $(function(){
-  _.defer(function() {
+  _.delay(function() {
     $('body').append('<ul id="notifications">');
     list = $('#notifications');
-  });
+  }, 500);
 })
 
 /**
