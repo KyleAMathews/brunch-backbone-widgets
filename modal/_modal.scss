@@ -24,7 +24,7 @@
   background-color: #ffffff;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  *border: 1px solid #999; // IE6-7
+  *border: 1px solid #999; /* IE6-7 */
 }
 .modal-header {
   @include rhythm(0, 0.5, 0.5, 0);
@@ -73,7 +73,7 @@
   @include border-bottom-radius(6px);
 
   border-color: #ddd;
-  text-align: right;
+  text-align: left;
   background-color: $grey95;
   *zoom: 1;
 }
@@ -82,4 +82,9 @@
   display: table;
   content: "";
   clear: both;
+}
+
+.modal code {
+  font-family: Inconsolata, Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  white-space: pre-wrap;
 }
