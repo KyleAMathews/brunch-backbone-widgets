@@ -3,7 +3,6 @@ module.exports = class ProgressBarView extends Backbone.View
 
   render: ->
     @$el.html ProgressBarTemplate()
-    @width(10)
     @
 
   width: (width) =>
